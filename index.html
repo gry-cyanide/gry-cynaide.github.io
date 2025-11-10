@@ -1,67 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Glitch Page</title>
-<style>
-body {
-  background: black;
-  color: white;
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-/* Glitch effect */
-.glitch {
-  font-size: 3rem;
-  font-weight: bold;
-  position: relative;
-  color: white;
-}
-
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-}
-
-.glitch::before {
-  animation: glitch 0.8s infinite linear alternate-reverse;
-  clip-path: inset(0 0 50% 0);
-  color: cyan;
-}
-
-.glitch::after {
-  animation: glitch 0.6s infinite linear alternate;
-  clip-path: inset(50% 0 0 0);
-  color: magenta;
-}
-
-@keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-3px, 3px); }
-  40% { transform: translate(-3px, -3px); }
-  60% { transform: translate(3px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  100% { transform: translate(0); }
-}
-
-.qr {
-  margin-top: 30px;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Index</title>
+  <meta http-equiv="refresh" content="0; url=page1.html" />
+  <title>Anti-Consumerism</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      background-color: white;
+      color: black;
+    }
+  </style>
 </head>
-
+<body></body>
 <body>
-  <div class="glitch" data-text="You expected content. You became the content.">You expected content. You became the content.</div>
-
-  <!-- Replace qr.png with your QR image filename -->
-  <img class="qr" src="frame.jpg" width="200">
+  <div>You expected content. You became the content.</div>
 </body>
 </html>
