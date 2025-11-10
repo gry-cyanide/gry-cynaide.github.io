@@ -1,55 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Glitch — Subtle</title>
+<meta charset="UTF-8">
+<title>Glitch Page</title>
 <style>
-  :root{--bg:#fff;--fg:#000;}
-  html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font-family:Inter,Arial,sans-serif}
-  .wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;position:relative;overflow:hidden}
-  .phrase{font-size:2rem;text-align:center;letter-spacing:.02em;position:relative}
-  /* subtle RGB split */
-  .phrase::before,.phrase::after{
-    content:attr(data-text);position:absolute;left:0;top:0;right:0;
-    pointer-events:none;opacity:.6;mix-blend-mode:screen;
-  }
-  .phrase::before{transform:translateX(-1px) translateY(0);color:#ff0040;filter:blur(.2px)}
-  .phrase::after{transform:translateX(1px) translateY(0);color:#00aaff;filter:blur(.2px)}
-  .phrase.glitch{animation:glitchText 5s infinite steps(2);}
-  @keyframes glitchText{
-    0%,90%{transform:none;opacity:1}
-    92%{transform:translateX(6px) skewX(6deg)}
-    94%{transform:translateX(-6px) skewX(-3deg)}
-    96%{transform:none}
-  }
+body {
+  background: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
 
-  /* scanline */
-  .scan{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(0,0,0,.02) 50%, rgba(0,0,0,0) 50%);background-size:100% 4px;animation:move 6s linear infinite;mix-blend-mode:multiply;opacity:.6}
-  @keyframes move{to{background-position-y:400px}}
+/* Glitch effect */
+.glitch {
+  font-size: 3rem;
+  font-weight: bold;
+  position: relative;
+  color: white;
+}
 
-  /* QR container - keep clean and scannable */
-  .qr{background:#fff;padding:12px;border-radius:6px;box-shadow:0 12px 40px rgba(0,0,0,.12)}
-  img.qrimg{display:block;width:180px;height:180px}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+}
 
-  /* tiny TV noise overlay */
-  .noise{position:absolute;inset:0;pointer-events:none;background-image:
-    conic-gradient(rgba(0,0,0,.02), rgba(0,0,0,0));opacity:.06}
+.glitch::before {
+  animation: glitch 0.8s infinite linear alternate-reverse;
+  clip-path: inset(0 0 50% 0);
+  color: cyan;
+}
+
+.glitch::after {
+  animation: glitch 0.6s infinite linear alternate;
+  clip-path: inset(50% 0 0 0);
+  color: magenta;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-3px, 3px); }
+  40% { transform: translate(-3px, -3px); }
+  60% { transform: translate(3px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.qr {
+  margin-top: 30px;
+}
 </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="phrase glitch" data-text="You expected content. You became the content.">You expected content. You became the content.</div>
+  <div class="glitch" data-text="You expected content. You became the content.">You expected content. You became the content.</div>
 
-    <!-- QR (keep as an <img> so phones read it) -->
-    <div class="qr" aria-hidden="false">
-      <img class="qrimg" src="https://gry-cynaide.github.io/page1-qr.png" alt="QR code (scan)"/>
-    </div>
-
-    <div class="phrase" data-text="Brands don’t sell products. They sell you.">Brands don’t sell products. They sell you.</div>
-
-    <div class="scan" aria-hidden="true"></div>
-    <div class="noise" aria-hidden="true"></div>
-  </div>
+  <!-- Replace qr.png with your QR image filename -->
+  <img class="qr" src="frame.jpg" width="200">
 </body>
 </html>
